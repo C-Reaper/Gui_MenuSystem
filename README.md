@@ -1,193 +1,100 @@
-# Gui_MenuSystem
+## Overview
 
+This project is a simple GUI menu system built using C and compiled on various platforms. The core functionality includes creating a window, handling user input, rendering rectangles, and displaying text. It uses custom header files for organizing code and multiple makefiles for cross-platform compilation.
 
-## Project Overview
+## Features
 
-This project implements specialized functionality related to menusystem.
+- **Window Creation**: Creates a window with specified width and height.
+- **Event Handling**: Handles mouse click events to select menu items.
+- **Rendering**: Renders rectangles on the screen at specified positions and sizes.
+- **Text Rendering**: Displays text at specified positions.
+- **Cross-Platform Compilation**: Supports Linux, Windows, Wine (for Windows under Linux), and WebAssembly (via Emscripten).
 
-## Core Components
-
-### Main Functionality
-- Implements core algorithms for menusystem
-- Efficient data structures
-- Optimized performance
-- Clean code organization
-
-### Technical Features
-- C/C++ implementation
-- Dynamic memory management
-- Platform-independent design
-- Real-time capable
-
-### Architecture
-- Module separation
-- Clear interface design
-- Proper abstraction layers
-- Extensible design
-
-## Use Cases
-- Production systems
-- Educational purposes
-- Research applications
-- Performance-critical operations
-
-## Performance Characteristics
-- Optimized algorithms
-- Efficient memory usage
-- Scalable architecture
-- Minimal overhead
-
-## Implementation Quality
-- Well-organized code
-- Meaningful naming
-- Proper error handling
-- Memory management
-
-## Build and Deployment
-- Standard C/C++ compilation
-- Makefile-based building
-- Cross-platform support
-- Easy integration
-
-
-## Building the Project
-
-### Prerequisites
-- C/C++ Compiler (GCC, Clang, or MSVC)
-- Make utility
-- Standard development tools
-
-### Build Steps
-
-1. Navigate to project directory:
-```bash
-cd Gui_MenuSystem
-```
-
-2. Build the project:
-```bash
-make -f Makefile.(os) all
-```
-
-3. For clean rebuild:
-```bash
-make -f Makefile.(os) clean
-make -f Makefile.(os) all
-```
-
-4. If there are ./bin and ./libs directories, build libs with:
-```bash
-make -f Makefile.(os) cleanlib
-make -f Makefile.(os) lib
-```
-
-### Build Options
-```bash
-make -f Makefile.(os) all         # build output
-make -f Makefile.(os) do        # build + exe output
-make -f Makefile.(os) clean   # Remove build artifacts
-```
-
-## Running the Project
-
-Execute the compiled binary:
-
-```bash
-./build/Main(.exe)
-```
-
-Or using make:
-```bash
-make -f Makefile.(os) exe
-```
-
-## Project Organization
+## Project Structure
 
 ```
 Gui_MenuSystem/
-├── src/
-│   ├── Main.c          # Entry point
-│   └── *.c             # Implementation files
-├── Makefile            # Build configuration
+├── build/              # .exe files produced by Main.c
+├── src/                # Source code directory
+│   ├── Main.c          # Entry point of the application
+│   └── *.h             # Header files for the source code
+└── Makefile.linux      # Linux Build configuration
+└── Makefile.windows    # Windows Build configuration
+└── Makefile.wine       # Wine Build configuration
+└── Makefile.web        # Emscripten Build configuration
 └── README.md           # This file
 ```
 
-## Technical Details
+### Prerequisites
 
-### Language: C/C++
-- Performance-oriented
-- Direct hardware access where needed
-- Memory efficient
-- Widely portable
+- **C/C++ Compiler and Debugger**: GCC for Linux, Clang for cross-compilation, mingw64-gcc for Windows under Wine.
+- **Make utility**: For building the project.
+- **Standard development tools**: Required to compile C code.
+- **Libraries**:
+  - X11 for Linux window management.
+  - png/jpeg libraries for image handling.
+  - Additional libraries depending on the target platform (e.g., user32, gdi32 for Windows).
 
-### Key Technologies
-- Standard C library
-- System-specific libraries as needed
-- Algorithm optimization
-- Efficient data structures
+## Build & Run
 
-### Code Quality
-- Clean, readable implementation
-- Proper error handling
-- Resource management
-- Well-documented algorithms
+### Building
 
-## Development Notes
+To build the project for a specific operating system:
 
-### Architecture Decisions
-- Modular design for reusability
-- Efficient algorithms for performance
-- Clear separation of concerns
-- Extensible structure
+- **Linux**:
+  ```sh
+  make -f Makefile.linux all
+  ```
 
-### Performance Optimizations
-- Algorithm efficiency
-- Memory layout optimization
-- Cache-conscious programming
-- Minimal overhead
+- **Windows**:
+  ```sh
+  make -f Makefile.windows all
+  ```
 
-### Portability
-- Cross-platform compatible
-- Platform-specific optimizations where possible
-- Standard library usage
-- No external dependencies (where feasible)
+- **Wine (for Windows under Linux)**:
+  ```sh
+  make -f Makefile.wine all
+  ```
 
-## Troubleshooting
+- **WebAssembly (via Emscripten)**:
+  ```sh
+  make -f Makefile.web all
+  ```
 
-### Build Issues
-- Ensure compiler is installed
-- Check file paths and permissions
-- Verify Make installation
-- Review compiler error messages
+### Running
 
-### Runtime Issues
-- Check input data validity
-- Verify file accessibility
-- Ensure sufficient memory
-- Review output format
+To run the compiled executable:
 
-### Performance Issues
-- Check compiler optimization flags
-- Profile hot code paths
-- Review algorithm complexity
-- Consider input size
+- **Linux**:
+  ```sh
+  make -f Makefile.linux exe
+  ```
 
-## Future Improvements
+- **Windows**:
+  ```sh
+  make -f Makefile.windows exe
+  ```
 
-Potential enhancements:
-- Additional optimization opportunities
-- Extended functionality
-- Platform-specific optimizations
-- Performance profiling
+- **Wine (for Windows under Linux)**:
+  ```sh
+  make -f Makefile.wine exe
+  ```
 
-## References
+- **WebAssembly (via Emscripten)**:
+  Open the generated `index.html` file in a web browser.
 
-For technical background:
-- Algorithm textbooks
-- Computer science references
-- Language documentation
-- Online educational resources
+### Clean and Rebuild
 
----
+To clean the build artifacts:
 
-*Project implementing practical algorithms and data structures in C/C++*
+```sh
+make -f Makefile.(os) clean
+```
+
+Then rebuild:
+
+```sh
+make -f Makefile.(os) all
+```
+
+These instructions should provide a comprehensive guide to building and running the project on various platforms.
